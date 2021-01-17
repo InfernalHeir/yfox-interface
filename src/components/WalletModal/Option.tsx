@@ -3,16 +3,12 @@ import styled from 'styled-components'
 import { ExternalLink } from '../../theme'
 
 const InfoCard = styled.button<{ active?: boolean }>`
-  background-color: ${({ theme, active }) => (active ? theme.bg3 : theme.bg2)};
+  background-color: ${({theme,active }) => (active ? theme.transparent : 'transparent')};
   padding: 1rem;
   outline: none;
-  border: 1px solid;
+  border: ${ ({active}) => (active ? 'none' : '1px solid rgb(255,159,0)') };
   border-radius: 12px;
   width: 100% !important;
-  &:focus {
-    box-shadow: 0 0 0 1px ${({ theme }) => theme.primary1};
-  }
-  border-color: ${({ theme, active }) => (active ? 'transparent' : theme.bg3)};
 `
 
 const OptionCard = styled(InfoCard as any)`
@@ -34,7 +30,6 @@ const OptionCardClickable = styled(OptionCard as any)<{ clickable?: boolean }>`
   margin-top: 0;
   &:hover {
     cursor: ${({ clickable }) => (clickable ? 'pointer' : '')};
-    border: ${({ clickable, theme }) => (clickable ? `1px solid ${theme.primary1}` : ``)};
   }
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
 `
@@ -62,7 +57,7 @@ const CircleWrapper = styled.div`
 
 const HeaderText = styled.div`
   ${({ theme }) => theme.flexRowNoWrap};
-  color: ${props => (props.color === 'blue' ? ({ theme }) => theme.primary1 : ({ theme }) => theme.text1)};
+  color: ${props => (props.color === 'blue' ? ({ theme }) => theme.primary2 : ({ theme }) => theme.text1)};
   font-size: 1rem;
   font-weight: 500;
 `
@@ -71,6 +66,7 @@ const SubHeader = styled.div`
   color: ${({ theme }) => theme.text1};
   margin-top: 10px;
   font-size: 12px;
+  text-align: left;
 `
 
 const IconWrapper = styled.div<{ size?: number | null }>`

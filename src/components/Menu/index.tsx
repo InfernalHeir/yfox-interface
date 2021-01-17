@@ -12,34 +12,21 @@ import { ButtonPrimary } from '../Button'
 
 const StyledMenuIcon = styled(MenuIcon)`
   path {
-    stroke: ${({ theme }) => theme.text1};
+    stroke: #fff;
   }
 `
 
 const StyledMenuButton = styled.button`
-  width: 100%;
-  height: 100%;
-  border: none;
-  background-color: transparent;
-  margin: 0;
-  padding: 0;
-  height: 35px;
-  background-color: ${({ theme }) => theme.bg3};
-
-  padding: 0.15rem 0.5rem;
-  border-radius: 0.5rem;
-
-  :hover,
-  :focus {
-    cursor: pointer;
-    outline: none;
-    background-color: ${({ theme }) => theme.bg4};
-  }
-
-  svg {
-    margin-top: 2px;
-  }
-`
+height: 35px;
+background-color: rgb(255, 159, 0);
+padding: 0.15rem 0.5rem;
+border-radius: 0.5rem;
+border: none;
+display: flex;
+align-items: center;
+cursor:pointer;
+justify-content: center;
+`;
 
 const StyledMenu = styled.div`
   margin-left: 0.5rem;

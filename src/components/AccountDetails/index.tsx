@@ -12,11 +12,13 @@ import Transaction from './Transaction'
 import { SUPPORTED_WALLETS } from '../../constants'
 import { ReactComponent as Close } from '../../assets/images/x.svg'
 import { getEtherscanLink } from '../../utils'
-import { injected, walletconnect, walletlink, fortmatic, portis } from '../../connectors'
-import CoinbaseWalletIcon from '../../assets/images/coinbaseWalletIcon.svg'
+import { injected, walletconnect, fortmatic, portis,trezor,ledger } from '../../connectors'
 import WalletConnectIcon from '../../assets/images/walletConnectIcon.svg'
 import FortmaticIcon from '../../assets/images/fortmaticIcon.png'
 import PortisIcon from '../../assets/images/portisIcon.png'
+import LedgerIcon from "../../assets/images/ledger.png"
+import TrezorIcon from "../../assets/images/trezor.png"
+
 import Identicon from '../Identicon'
 import { ButtonSecondary } from '../Button'
 import { ExternalLink as LinkIcon } from 'react-feather'
@@ -25,7 +27,8 @@ import { ExternalLink, LinkStyledButton, TYPE } from '../../theme'
 const HeaderRow = styled.div`
   ${({ theme }) => theme.flexRowNoWrap};
   padding: 1rem 1rem;
-  font-weight: 500;
+  font-weight: 600;
+  background:rgb(33,36,41);
   color: ${props => (props.color === 'blue' ? ({ theme }) => theme.primary1 : 'inherit')};
   ${({ theme }) => theme.mediaWidth.upToMedium`
     padding: 1rem;
@@ -77,7 +80,7 @@ const AccountGroupingRow = styled.div`
 
 const AccountSection = styled.div`
   background-color: ${({ theme }) => theme.bg1};
-  padding: 0rem 1rem;
+  padding: 1rem 1rem;
   ${({ theme }) => theme.mediaWidth.upToMedium`padding: 0rem 1rem 1.5rem 1rem;`};
 `
 
@@ -98,7 +101,7 @@ const LowerSection = styled.div`
   padding: 1.5rem;
   flex-grow: 1;
   overflow: auto;
-  background-color: ${({ theme }) => theme.bg2};
+  background-color: ${({ theme }) => theme.bg1};
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 
@@ -197,7 +200,7 @@ const WalletAction = styled(ButtonSecondary)`
 `
 
 const MainWalletAction = styled(WalletAction)`
-  color: ${({ theme }) => theme.primary1};
+  color: ${({ theme }) => theme.primary2};
 `
 
 function renderTransactions(transactions: string[]) {
@@ -254,12 +257,6 @@ export default function AccountDetails({
           <img src={WalletConnectIcon} alt={'wallet connect logo'} />
         </IconWrapper>
       )
-    } else if (connector === walletlink) {
-      return (
-        <IconWrapper size={16}>
-          <img src={CoinbaseWalletIcon} alt={'coinbase wallet logo'} />
-        </IconWrapper>
-      )
     } else if (connector === fortmatic) {
       return (
         <IconWrapper size={16}>
@@ -281,6 +278,18 @@ export default function AccountDetails({
           </IconWrapper>
         </>
       )
+    } else if (connector === ledger) {
+      return (
+        <IconWrapper size={16}>
+          <img src={LedgerIcon} alt={''} />
+        </IconWrapper>
+      )
+    }else if (connector === trezor) {
+      return (
+        <IconWrapper size={16}>
+          <img src={TrezorIcon} alt={''} />
+        </IconWrapper>
+      )
     }
     return null
   }
@@ -295,14 +304,14 @@ export default function AccountDetails({
         <CloseIcon onClick={toggleWalletModal}>
           <CloseColor />
         </CloseIcon>
-        <HeaderRow>Account</HeaderRow>
+        <HeaderRow>Account Information</HeaderRow>
         <AccountSection>
           <YourAccount>
             <InfoCard>
               <AccountGroupingRow>
                 {formatConnectorName()}
                 <div>
-                  {connector !== injected && connector !== walletlink && (
+                  {connector !== injected  && (
                     <WalletAction
                       style={{ fontSize: '.825rem', fontWeight: 400, marginRight: '8px' }}
                       onClick={() => {
@@ -318,7 +327,7 @@ export default function AccountDetails({
                       openOptions()
                     }}
                   >
-                    Change
+                    Switch
                   </WalletAction>
                 </div>
               </AccountGroupingRow>

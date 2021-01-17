@@ -44,6 +44,16 @@ import { computeTradePriceBreakdown, warningSeverity } from '../../utils/prices'
 import AppBody from '../AppBody'
 import { ClickableText } from '../Pool/styleds'
 import Loader from '../../components/Loader'
+import styled from "styled-components"
+
+const SwapHeader = styled.h3`
+color: white;
+font-size: 36px;
+font-weight: 800;
+font-style: italic;
+margin: 10px 0 10px 0;   
+`;
+
 
 export default function Swap() {
   const loadedUrlParams = useDefaultsFromURLSearch()
@@ -288,6 +298,7 @@ export default function Swap() {
             onDismiss={handleConfirmDismiss}
           />
 
+            <SwapHeader>Swap</SwapHeader>
           <AutoColumn gap={'md'}>
             <CurrencyInputPanel
               label={independentField === Field.OUTPUT && !showWrap && trade ? 'From (estimated)' : 'From'}

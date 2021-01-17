@@ -1,7 +1,7 @@
 import { ChainId, JSBI, Percent, Token, WETH } from '@uniswap/sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
-import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
+import { fortmatic, injected, ledger, portis, trezor, walletconnect } from '../connectors'
 
 export const ROUTER_ADDRESS = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D'
 
@@ -124,7 +124,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     connector: injected,
     name: 'MetaMask',
     iconName: 'metamask.png',
-    description: 'Easy-to-use browser extension.',
+    description: 'Chorme Broswer Based Extension Trusted By 10 Million Users',
     href: null,
     color: '#E8831D'
   },
@@ -132,18 +132,10 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     connector: walletconnect,
     name: 'WalletConnect',
     iconName: 'walletConnectIcon.svg',
-    description: 'Connect to Trust Wallet, Rainbow Wallet and more...',
+    description: 'Using Trust Wallet',
     href: null,
     color: '#4196FC',
     mobile: true
-  },
-  WALLET_LINK: {
-    connector: walletlink,
-    name: 'Coinbase Wallet',
-    iconName: 'coinbaseWalletIcon.svg',
-    description: 'Use Coinbase Wallet app on mobile device',
-    href: null,
-    color: '#315CF5'
   },
   COINBASE_LINK: {
     name: 'Open in Coinbase Wallet',
@@ -154,6 +146,15 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     mobile: true,
     mobileOnly: true
   },
+  Portis: {
+    connector: portis,
+    name: 'Portis',
+    iconName: 'portisIcon.png',
+    description: 'Login using Portis hosted wallet',
+    href: null,
+    color: '#4A6C9B',
+    mobile: true
+  },
   FORTMATIC: {
     connector: fortmatic,
     name: 'Fortmatic',
@@ -163,14 +164,21 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     color: '#6748FF',
     mobile: true
   },
-  Portis: {
-    connector: portis,
-    name: 'Portis',
-    iconName: 'portisIcon.png',
-    description: 'Login using Portis hosted wallet',
+  Ledger: {
+    connector: ledger,
+    name: 'Ledger',
+    iconName: 'ledger.png',
+    description: 'Login using Ledger Hardware Wallet',
     href: null,
-    color: '#4A6C9B',
-    mobile: true
+    color: '#6748FF',
+  },
+  Trezor: {
+    connector: trezor,
+    name: 'Trezor',
+    iconName: 'trezor.png',
+    description: 'Login using Trezor Hardware Wallet',
+    href: null,
+    color: '#6748FF',
   }
 }
 

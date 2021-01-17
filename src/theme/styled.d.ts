@@ -25,6 +25,7 @@ export interface Colors {
 
   //blues
   primary1: Color
+  transparent:Color
   primary2: Color
   primary3: Color
   primary4: Color

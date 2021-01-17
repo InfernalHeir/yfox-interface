@@ -1,11 +1,13 @@
 import { Web3Provider } from '@ethersproject/providers'
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
-import { WalletLinkConnector } from '@web3-react/walletlink-connector'
 import { PortisConnector } from '@web3-react/portis-connector'
-
+import {LedgerConnector} from "@web3-react/ledger-connector"
+import {TrezorConnector} from "@web3-react/trezor-connector"
 import { FortmaticConnector } from './Fortmatic'
 import { NetworkConnector } from './NetworkConnector'
+
+const POLLING_INTERVAL = 12000
 
 const NETWORK_URL = process.env.REACT_APP_NETWORK_URL
 const FORMATIC_KEY = process.env.REACT_APP_FORTMATIC_KEY
@@ -35,7 +37,7 @@ export const walletconnect = new WalletConnectConnector({
   rpc: { 1: NETWORK_URL },
   bridge: 'https://bridge.walletconnect.org',
   qrcode: true,
-  pollingInterval: 15000
+  pollingInterval: POLLING_INTERVAL
 })
 
 // mainnet only
@@ -50,10 +52,19 @@ export const portis = new PortisConnector({
   networks: [1]
 })
 
-// mainnet only
-export const walletlink = new WalletLinkConnector({
+// mainet only
+export const ledger = new LedgerConnector({
+  chainId: 1,
   url: NETWORK_URL,
-  appName: 'Uniswap',
-  appLogoUrl:
-    'https://mpng.pngfly.com/20181202/bex/kisspng-emoji-domain-unicorn-pin-badges-sticker-unicorn-tumblr-emoji-unicorn-iphoneemoji-5c046729264a77.5671679315437924251569.jpg'
-})
+  pollingInterval: POLLING_INTERVAL
+});
+
+// works on mainnet only
+
+export const trezor = new TrezorConnector({
+  chainId: 1,
+  url: NETWORK_URL,
+  pollingInterval: POLLING_INTERVAL,
+  manifestEmail: "dummy@abc.xyz",
+  manifestAppUrl: "https://8rg3h.csb.app/"
+});

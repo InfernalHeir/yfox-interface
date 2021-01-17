@@ -64,31 +64,28 @@ export const ButtonPrimary = styled(Base)`
 `
 
 export const ButtonLight = styled(Base)`
-  background-color: ${({ theme }) => theme.primary5};
-  color: ${({ theme }) => theme.primaryText1};
-  font-size: 16px;
-  font-weight: 500;
-  &:focus {
-    box-shadow: 0 0 0 1pt ${({ theme, disabled }) => !disabled && darken(0.03, theme.primary5)};
-    background-color: ${({ theme, disabled }) => !disabled && darken(0.03, theme.primary5)};
-  }
-  &:hover {
-    background-color: ${({ theme, disabled }) => !disabled && darken(0.03, theme.primary5)};
-  }
-  &:active {
-    box-shadow: 0 0 0 1pt ${({ theme, disabled }) => !disabled && darken(0.05, theme.primary5)};
-    background-color: ${({ theme, disabled }) => !disabled && darken(0.05, theme.primary5)};
-  }
-  :disabled {
-    opacity: 0.4;
-    :hover {
-      cursor: auto;
-      background-color: ${({ theme }) => theme.primary5};
-      box-shadow: none;
-      border: 1px solid transparent;
-      outline: none;
-    }
-  }
+padding: 0.5rem;
+width: 100%;
+text-align: center;
+border-radius: 12px;
+outline: none;
+border: 1px solid transparent;
+text-decoration: none;
+display: flex;
+justify-content: center;
+flex-wrap: nowrap;
+align-items: center;
+cursor: pointer;
+position: relative;
+z-index: 1;
+font-weight:800;
+background-color: rgba(21, 61, 111, 0.44);
+color: rgb(255, 159, 0);
+font-size: 24px;
+font-weight: 800;
+margin-top: 1rem;
+height: 75px;  
+}
 `
 
 export const ButtonGray = styled(Base)`
@@ -111,7 +108,7 @@ export const ButtonGray = styled(Base)`
 
 export const ButtonSecondary = styled(Base)`
   border: 1px solid ${({ theme }) => theme.primary4};
-  color: ${({ theme }) => theme.primary1};
+  color: rgb(255,159,0);
   background-color: transparent;
   font-size: 16px;
   border-radius: 12px;
@@ -119,14 +116,14 @@ export const ButtonSecondary = styled(Base)`
 
   &:focus {
     box-shadow: 0 0 0 1pt ${({ theme }) => theme.primary4};
-    border: 1px solid ${({ theme }) => theme.primary3};
+    border: 1px solid ${({ theme }) => theme.primary4};
   }
   &:hover {
-    border: 1px solid ${({ theme }) => theme.primary3};
+    border: 1px solid ${({ theme }) => theme.primary4};
   }
   &:active {
     box-shadow: 0 0 0 1pt ${({ theme }) => theme.primary4};
-    border: 1px solid ${({ theme }) => theme.primary3};
+    border: 1px solid ${({ theme }) => theme.primary4};
   }
   &:disabled {
     opacity: 50%;
